@@ -1,4 +1,4 @@
-Code puzzle build with Erlang
+Code puzzle built with Erlang
 =====
 
 An OTP application
