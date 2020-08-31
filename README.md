@@ -3,15 +3,33 @@ Code puzzle built with Erlang
 
 An OTP application
 
+## Requirements
+To run the application and tests you will need to have [Erlang](https://www.erlang.org/downloads) installed on your system and [rebar3](https://www.rebar3.org/) or you could just run the docker script.
+
 Build
 -----
 
     $ rebar3 compile
 
-Run tests
+Run application
 -----
 
+    $ rebar3 shell
+
+Run tests
+-----
+    $ rebar3 eunit --dir="test"
+
+or with
+
     $ ./run_tests.sh
+
+Docker
+-----
+    
+    $ ./docker.sh
+
+This command creates a container and runs the tests and the application and removes the container when the application finished running.
 
 ## The puzzle
 
