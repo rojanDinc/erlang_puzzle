@@ -15,6 +15,7 @@
 -import(utils, [max_min_difference/1, read_matrix_file/1]).
 
 start(_StartType, _StartArgs) ->
+    main(),
     matrix_puzzle_sup:start_link().
 
 stop(_State) -> ok.
@@ -55,3 +56,19 @@ divisibles_checksum ( Filename ) ->
       {error, Reason}
   end.
 
+main() ->
+  % run part1 and print result
+  case checksum("values.txt") of
+    {ok, Part1Sum} ->
+      io:fwrite("~s~B~n", ["Ran part one, sum = ", Part1Sum]);
+    {error, Part1Reason} ->
+      io:fwrite("~s~s~n", ["Failed to run part1, reason: ", Part1Reason])
+  end,
+
+  % run part2 and print result
+  case divisibles_checksum("values.txt") of
+    {ok, Part2Sum} ->
+      io:fwrite("~s~B~n", ["Ran part two, sum = ", Part2Sum]);
+    {error, Part2Reason} ->
+      io:fwrite("~s~s~n", ["Failed to run part2, reason: ", Part2Reason])
+  end.
