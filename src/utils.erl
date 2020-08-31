@@ -2,7 +2,7 @@
 
 -export([read_matrix_file/1, max_min_difference/1]).
 
-handle_open_file_error_cases(Reason) ->
+handle_file_open_error_cases(Reason) ->
   case Reason of
     enoent ->
       "File doesn't exist.";
@@ -37,7 +37,7 @@ read_matrix_file(Filename) ->
         file:close(IoDevice),
         {ok, Values};
       {error, Reason} ->
-        ReasonMessage = handle_open_file_error_cases(Reason),
+        ReasonMessage = handle_file_open_error_cases(Reason),
         io:fwrite("Could not read file, reason: ~s~n", [ReasonMessage]),
         {error, Reason}
     end.
